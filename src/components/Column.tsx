@@ -1,6 +1,7 @@
 import { Badge, Box, Heading, IconButton, Stack, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { FaPlus } from 'react-icons/fa';
+import useColumnDrop from '../hooks/useColumnDrop';
 import useColumnTasks from '../hooks/useColumnTasks';
 import { ColumnType } from '../utils/enum';
 import Task from './Task';
@@ -14,16 +15,18 @@ const ColumnColorScheme: Record<ColumnType, string> = {
 
 const Column = ({ column }: { column: ColumnType }) => {
 
-  const { tasks, addEmptyTask, updateTask, deleteTask } = useColumnTasks(column);
+  const { tasks, addEmptyTask, updateTask, deleteTask, dropTaskFrom } = useColumnTasks(column);
+
+  const { dropRef, isOver } = useColumnDrop(column, dropTaskFrom)
 
   const columnTasks = tasks.map((task, index) =>
-  <Task
-  key={task.id}
-  index={index}
-  task={task}
-  onDelete={deleteTask}
-  onUpdate={updateTask}
-  />)
+    <Task
+      key={task.id}
+      index={index}
+      task={task}
+      onDelete={deleteTask}
+      onUpdate={updateTask}
+    />)
 
   return (
     <Box>
@@ -51,6 +54,7 @@ const Column = ({ column }: { column: ColumnType }) => {
         onClick={addEmptyTask}
       />
       <Stack
+        ref={dropRef}
         direction={{ base: 'row', md: 'column' }}
         h={{ base: '300', md: '600' }}
         p={4}
@@ -60,6 +64,7 @@ const Column = ({ column }: { column: ColumnType }) => {
         rounded={'lg'}
         boxShadow={'md'}
         overflow={'auto'}
+        opacity={isOver ? 0.85 : 1}
       >{columnTasks}
       </Stack>
     </Box>
