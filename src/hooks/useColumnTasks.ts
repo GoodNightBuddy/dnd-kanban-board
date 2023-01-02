@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { v4 } from "uuid";
 import { ColumnType } from "../utils/enum"
-import { pickChakraRandomColor } from "../utils/helper";
+import { pickChakraRandomColor, swap } from "../utils/helper";
 import { TaskModel } from "../utils/models";
 import useTaskCollection from "./useTaskCollection";
 
@@ -81,14 +81,26 @@ const useColumnTasks = (column: ColumnType) => {
         [column]: [{...movingTask, column}, ...toColumnTasks]
       }
     })
-  }, [column, setTasks])
+  }, [column, setTasks]);
+
+  const swapTasks = useCallback((i: number, j: number) => {
+    setTasks(alltasks => {
+      const columnTasks = alltasks[column];
+
+      return {
+        ...alltasks,
+        [column]: swap(columnTasks, i, j)
+      }
+    })
+  }, [column, setTasks]);
 
   return {
     tasks: tasks[column],
     addEmptyTask,
     updateTask,
     deleteTask,
-    dropTaskFrom
+    dropTaskFrom,
+    swapTasks
   }
 };
 
