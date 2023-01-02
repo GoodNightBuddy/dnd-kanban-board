@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/dnd-kanban-board/static/js/main.d1086952.js",
+    "main.js": "/dnd-kanban-board/static/js/main.ae17c206.js",
     "index.html": "/dnd-kanban-board/index.html",
-    "main.d1086952.js.map": "/dnd-kanban-board/static/js/main.d1086952.js.map"
+    "main.ae17c206.js.map": "/dnd-kanban-board/static/js/main.ae17c206.js.map"
   },
   "entrypoints": [
-    "static/js/main.d1086952.js"
+    "static/js/main.ae17c206.js"
   ]
 }
