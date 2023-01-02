@@ -45,9 +45,10 @@ const Task = ({
       rounded={'lg'}
       w={200}
       pl={3}
-      pr={7}
+      pr={2}
       pt={3}
       pb={1}
+      minW={{ base: 40, md: 'unset' }}
       boxShadow='xl'
       cursor={'grab'}
       bgColor={task.color}
@@ -70,6 +71,8 @@ const Task = ({
         onClick={handleDeleteClick}
       />
       <AutoResizeTextarea
+        fontSize={{ base: 'small', sm: '0.9rem', md: 'md'}}
+        lineHeight={{ base: '1', md: 'md'}}
         value={task.title}
         fontWeight={'semibold'}
         cursor={'inherit'}
@@ -78,9 +81,11 @@ const Task = ({
         resize={'none'}
         minH={70}
         maxH={200}
+        maxW={'100%'}
         focusBorderColor={'none'}
         color={'gray.700'}
         onChange={handleTitleChange}
+        _focusVisible={{border: 'none'}}
       />
 
     </Box>

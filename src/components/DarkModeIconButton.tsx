@@ -14,6 +14,8 @@ const DarkModeIconButton = ({...rest}: React.ComponentPropsWithoutRef<typeof Ico
       icon={isDark ? <FaMoon /> : <FaSun />}
       aria-label={'dark-mode-toggle'}
       {...rest}
+      w={'35px'}
+      h={'35px'}
       />
   );
 };

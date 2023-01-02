@@ -57,7 +57,7 @@ const Column = ({ column }: { column: ColumnType }) => {
       <Stack
         ref={dropRef}
         direction={{ base: 'row', md: 'column' }}
-        h={{ base: '300', md: '600' }}
+        h={{ base: '255', md: '600' }}
         p={4}
         mt={2}
         spacing={4}
@@ -66,6 +66,7 @@ const Column = ({ column }: { column: ColumnType }) => {
         boxShadow={'md'}
         overflow={'auto'}
         opacity={isOver ? 0.85 : 1}
+        alignItems={'flex-start'}
       >{columnTasks}
       </Stack>
     </Box>

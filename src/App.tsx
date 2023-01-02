@@ -14,10 +14,11 @@ export const App = () => (
       bgGradient={'linear(to-l, #7928ca, #FF0080)'}
       bgClip={'text'}
       mt={4}
+      mx={20}
     >
       Welcome to DnD Kanban
     </Heading>
-    <DarkModeIconButton position={'absolute'} top={0} right={2}/>
+    <DarkModeIconButton position={'absolute'} top={0} right={2} fontSize={'xl'}/>
     <Container maxW={'container.lg'} px={4} py={10}>
       <DndProvider backend={HTML5Backend}>
         <SimpleGrid columns={{ base: 1, md: 4 }} spacing={{ base: 16, md: 4 }}>
